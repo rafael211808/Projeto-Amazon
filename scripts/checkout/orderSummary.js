@@ -128,10 +128,7 @@ export function renderOrderSummary() {
 
         updateCartQuantity('js-items-quantity');
 
-        const container = document.querySelector(
-          `.js-cart-item-container-${productId}`
-        );
-        container.remove();
+        renderOrderSummary();
 
         renderPaymentSummary();
       });
@@ -164,6 +161,8 @@ export function renderOrderSummary() {
         updateQuantity(productId, newQuantity);
 
         updateCartQuantity('js-items-quantity');
+
+        renderPaymentSummary();
 
         const matchingItem = cart.find((cartItem) => {
           return cartItem.productId === productId;
