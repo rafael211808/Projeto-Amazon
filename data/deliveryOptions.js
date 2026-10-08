@@ -56,3 +56,7 @@ export function validDeliveryOption(deliveryOptionId) {
 
   return found;
 }
+
+export function formatDeliveryDate(deliveryTime) {
+  return dayjs(deliveryTime).format('dddd, MMMM D');
+}
