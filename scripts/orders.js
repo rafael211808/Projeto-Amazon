@@ -37,7 +37,7 @@ async function renderOrdersContainer() {
           </div>
         </div>
 
-        <div class="order-details-grid js-order-details-grid"></div>
+        <div class="order-details-grid js-order-details-grid-${orderId}"></div>
       </div>
     `;
   });
@@ -49,11 +49,11 @@ async function renderOrdersContainer() {
 }
 
 async function renderOrdersDetails() {
-  let ordersDetailsGridHTML = '';
-
   await loadProductsFetch()
 
   orders.forEach((order) => {
+    let ordersDetailsGridHTML = '';
+
     const orderId = order.id;
     const products = order.products;
 
@@ -96,10 +96,9 @@ async function renderOrdersDetails() {
           </a>
         </div>
       `;
-      
-      document.querySelector('.js-order-details-grid')
-        .innerHTML = ordersDetailsGridHTML;
     });
+    document.querySelector(`.js-order-details-grid-${orderId}`)
+      .innerHTML = ordersDetailsGridHTML;
   });
 
   document.querySelectorAll('.js-buy-again-button')
@@ -116,3 +115,5 @@ async function renderOrdersDetails() {
   updateCartQuantity('js-cart-quantity');
 }
 renderOrdersContainer();
+
+console.log(orders);
