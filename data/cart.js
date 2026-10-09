@@ -17,7 +17,7 @@ export function loadFromStorage() {
 }
 
 
-function saveToStored() {
+function saveToStorage() {
   localStorage.setItem('cart', JSON.stringify(cart))
 }
 
@@ -40,7 +40,7 @@ export function addToCart(productId, quantity) {
     });
   }
 
-  saveToStored();
+  saveToStorage();
 }
 
 export function removeFromCart(productId) {
@@ -54,7 +54,7 @@ export function removeFromCart(productId) {
 
   cart = newCart;
 
-  saveToStored();
+  saveToStorage();
 }
 
 export function updateCartQuantity(className) {
@@ -75,7 +75,7 @@ export function updateQuantity(productId, newQuantity) {
     }
   });
 
-  saveToStored();
+  saveToStorage();
 }
 
 export function updateDeliveryOption(productId, deliveryOptionId) {
@@ -97,7 +97,7 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
 
   matchingItem.deliveryOptionId = deliveryOptionId;
   
-  saveToStored();
+  saveToStorage();
 }
 
 export function loadCart(fun) {
@@ -117,4 +117,10 @@ export async function loadCartFetch() {
   const text = await response.text();
   console.log(text);
   return text;
+}
+
+export function resetCart() {
+  cart = [];
+
+  saveToStorage();
 }

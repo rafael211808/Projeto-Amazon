@@ -34,13 +34,15 @@ async function renderTracking() {
             ((now - orderTime) / (deliveryTime - orderTime)) * 100
           ));
 
+          const deliveredMessage = now < deliveryTime ? 'Arriving on' : 'Delivered on';
+
           trackingHTML += `
             <a class="back-to-orders-link link-primary" href="orders.html">
               View all orders
             </a>
 
             <div class="delivery-date">
-              Arriving on ${deliveryDate}
+              ${deliveredMessage} ${deliveryDate}
             </div>
 
             <div class="product-info">
